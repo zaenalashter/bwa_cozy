@@ -6,6 +6,8 @@ import 'package:bwa_cozy/widgets/space_card.dart';
 import 'package:bwa_cozy/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
 
+import '../models/tips.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -182,11 +184,25 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: edge),
                 child: Column(
                   children: [
-                    TipsCard(),
+                    TipsCard(
+                      Tips(
+                        id: 1,
+                        title: 'City Guidelines',
+                        imageUrl: 'images/tips1.png',
+                        updatedAt: '1 hour ago',
+                      ),
+                    ),
                     SizedBox(
                       height: 20,
                     ),
-                    TipsCard(),
+                    TipsCard(
+                      Tips(
+                        id: 2,
+                        title: 'Jakarta Fairship',
+                        imageUrl: 'images/tips2.png',
+                        updatedAt: '17 hour ago',
+                      ),
+                    ),
                   ],
                 ),
               ),
