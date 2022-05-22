@@ -3,6 +3,7 @@ import 'package:bwa_cozy/models/space.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/city_card.dart';
 import 'package:bwa_cozy/widgets/space_card.dart';
+import 'package:bwa_cozy/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -158,12 +159,37 @@ class HomePage extends StatelessWidget {
                         ranting: 5,
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
                   ],
                 ),
-              )
+              ),
+              //NOTE: TIPS & GUIDANCE
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: edge),
+                child: Text(
+                  'Tips & Guidence',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: edge),
+                child: Column(
+                  children: [
+                    TipsCard(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TipsCard(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
