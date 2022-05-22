@@ -1,4 +1,5 @@
 import 'package:bwa_cozy/models/city.dart';
+import 'package:bwa_cozy/models/space.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/city_card.dart';
 import 'package:bwa_cozy/widgets/space_card.dart';
@@ -112,21 +113,56 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              Column(
-                children: [
-                  SpaceCard(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: edge,
+                ),
+                child: Column(
+                  children: [
+                    SpaceCard(
+                      Space(
+                        id: 1,
+                        name: 'Kuretakeso Hott',
+                        imageUrl: 'images/space1.png',
+                        price: 120,
+                        country: 'Indonesia',
+                        city: 'Bandung',
+                        ranting: 5,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SpaceCard(
+                      Space(
+                        id: 2,
+                        name: 'Roemah Nenek',
+                        imageUrl: 'images/space2.png',
+                        price: 70,
+                        country: 'Indonesia',
+                        city: 'Jakarta',
+                        ranting: 5,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SpaceCard(
+                      Space(
+                        id: 3,
+                        name: 'Kosan Cangkring',
+                        imageUrl: 'images/space3.png',
+                        price: 600,
+                        country: 'Indonesia',
+                        city: 'Jakarta',
+                        ranting: 5,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
               )
             ],
           ),
