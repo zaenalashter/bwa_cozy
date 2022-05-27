@@ -8,6 +8,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -17,27 +18,6 @@ class DetailPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: 350,
               fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: edge, vertical: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.asset(
-                      'images/btn_back.png',
-                      width: 24,
-                    ),
-                  ),
-                  Image.asset(
-                    'images/btn_wishlist.png',
-                    width: 24,
-                  ),
-                ],
-              ),
             ),
             ListView(
               children: [
@@ -231,10 +211,91 @@ class DetailPage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      //NOTE: LOCATION
+                      Padding(
+                        padding: EdgeInsets.only(left: edge),
+                        child: Text(
+                          'Location',
+                          style: blackTextStyle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: edge,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Jl. Kebon Jeruk No. 1 \n Jakarta Selatan, Indonesia',
+                              style: greyTextStyle,
+                            ),
+                            Image.asset(
+                              'images/btn_map.png',
+                              width: 40,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: edge,
+                        ),
+                        height: 50,
+                        width: MediaQuery.of(context).size.width - (2 * edge),
+                        child: RaisedButton(
+                          onPressed: () {},
+                          color: purpleColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          child: Text(
+                            'Book Now',
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      )
                     ],
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: edge, vertical: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'images/btn_back.png',
+                      width: 24,
+                    ),
+                  ),
+                  Image.asset(
+                    'images/btn_wishlist.png',
+                    width: 24,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
