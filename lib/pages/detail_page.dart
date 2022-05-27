@@ -165,7 +165,7 @@ class DetailPage extends StatelessWidget {
                               total: 2,
                             ),
                             FacilityItem(
-                              name : 'Bedroom',
+                              name: 'Bedroom',
                               imageUrl: 'images/icon_bedroom.png',
                               total: 3,
                             ),
@@ -173,6 +173,60 @@ class DetailPage extends StatelessWidget {
                               name: 'Big Lemari',
                               imageUrl: 'images/icon_cupboard.png',
                               total: 3,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      //NOTE: PHOTO
+                      Padding(
+                        padding: EdgeInsets.only(left: edge),
+                        child: Text(
+                          'Photos',
+                          style: blackTextStyle.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Container(
+                        height: 88,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            SizedBox(
+                              width: edge,
+                            ),
+                            Image.asset(
+                              'images/photo1.png',
+                              width: 110,
+                              height: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Image.asset(
+                              'images/photo2.png',
+                              width: 110,
+                              height: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              width: 18,
+                            ),
+                            Image.asset(
+                              'images/photo3.png',
+                              width: 110,
+                              height: 88,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              width: edge,
                             ),
                           ],
                         ),
