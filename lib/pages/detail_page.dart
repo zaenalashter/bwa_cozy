@@ -1,12 +1,19 @@
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    void launchUrl(url) async {
+      if (await canLaunchUrl(url)) {
+        launch(url);
+      }
+    }
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
