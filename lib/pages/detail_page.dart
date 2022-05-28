@@ -1,3 +1,4 @@
+import 'package:bwa_cozy/pages/error_page.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +10,20 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final Uri _url = Uri.parse('https://www.google.com/maps/place/ZeteM.Comp/@-7.5342053,110.5196201,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a6f9e44ff8e05:0xb8d0fb4b90235c26!8m2!3d-7.5342053!4d110.5218088');
-    final Uri _telp = Uri.parse('tel:+6282227535343');
-    void _launchUrl() async {
-  if (!await launchUrl(_url)) throw 'Could not launch $_url';
-  if (!await launchUrl(_telp)) throw 'Could not launch $_telp';
+//     final Uri _url = Uri.parse('https://www.google.com/maps/place/ZeteM.Comp/@-7.5342053,110.5196201,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a6f9e44ff8e05:0xb8d0fb4b90235c26!8m2!3d-7.5342053!4d110.5218088');
+//     final Uri _telp = Uri.parse('tel:+6282227535343');
+//     void _launchUrl() async {
+//   if (!await launchUrl(_url)) throw 'Could not launch $_url';
+//   if (!await launchUrl(_telp)) throw 'Could not launch $_telp';
+// }
+
+  launchUrl(String url) async {
+    if(await canLaunch(url)){
+      await launch(url);
+  }else{
+      // throw 'Could not launch $url';
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ErrorPage()));
+  }
 }
 
     return Scaffold(
@@ -249,7 +259,7 @@ class DetailPage extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: (){
-                                launchUrl(_url);
+                                launchUrl('qwertyuiop');
                               },
                               child: Image.asset(
                                 'images/btn_map.png',
@@ -270,7 +280,7 @@ class DetailPage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width - (2 * edge),
                         child: RaisedButton(
                           onPressed: () {
-                            launchUrl(_telp);
+                            launchUrl('tel:+622133344455');
                           },
                           color: purpleColor,
                           shape: RoundedRectangleBorder(
