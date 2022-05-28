@@ -8,11 +8,13 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void launchUrl(url) async {
-      if (await canLaunchUrl(url)) {
-        launch(url);
-      }
-    }
+
+    final Uri _url = Uri.parse('https://www.google.com/maps/place/ZeteM.Comp/@-7.5342053,110.5196201,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a6f9e44ff8e05:0xb8d0fb4b90235c26!8m2!3d-7.5342053!4d110.5218088');
+    final Uri _telp = Uri.parse('tel:+6282227535343');
+    void _launchUrl() async {
+  if (!await launchUrl(_url)) throw 'Could not launch $_url';
+  if (!await launchUrl(_telp)) throw 'Could not launch $_telp';
+}
 
     return Scaffold(
       backgroundColor: whiteColor,
@@ -245,9 +247,14 @@ class DetailPage extends StatelessWidget {
                               'Jl. Kebon Jeruk No. 1 \n Jakarta Selatan, Indonesia',
                               style: greyTextStyle,
                             ),
-                            Image.asset(
-                              'images/btn_map.png',
-                              width: 40,
+                            InkWell(
+                              onTap: (){
+                                launchUrl(_url);
+                              },
+                              child: Image.asset(
+                                'images/btn_map.png',
+                                width: 40,
+                              ),
                             ),
                           ],
                         ),
@@ -262,7 +269,9 @@ class DetailPage extends StatelessWidget {
                         height: 50,
                         width: MediaQuery.of(context).size.width - (2 * edge),
                         child: RaisedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            launchUrl(_telp);
+                          },
                           color: purpleColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(17),
