@@ -6,12 +6,17 @@ import 'package:bwa_cozy/widgets/city_card.dart';
 import 'package:bwa_cozy/widgets/space_card.dart';
 import 'package:bwa_cozy/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/tips.dart';
+import '../providers/space_providers.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var spaceProvider = Provider.of<SpaceProvider>(context);
+    spaceProvider.getRecomendedSpaces();
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
