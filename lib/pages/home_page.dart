@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bwa_cozy/models/city.dart';
 import 'package:bwa_cozy/models/space.dart';
 import 'package:bwa_cozy/theme.dart';
@@ -15,7 +17,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var spaceProvider = Provider.of<SpaceProvider>(context);
-    spaceProvider.getRecomendedSpaces();
 
     return Scaffold(
       backgroundColor: whiteColor,
@@ -126,48 +127,30 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                 horizontal: edge,
               ),
-              child: Column(
-                children: [
-                  SpaceCard(
-                    Space(
-                      id: 1,
-                      name: 'Kuretakeso Hott',
-                      imageUrl: 'images/space1.png',
-                      price: 120,
-                      country: 'Indonesia',
-                      city: 'Bandung',
-                      ranting: 5,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    Space(
-                      id: 2,
-                      name: 'Roemah Nenek',
-                      imageUrl: 'images/space2.png',
-                      price: 70,
-                      country: 'Indonesia',
-                      city: 'Jakarta',
-                      ranting: 5,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    Space(
-                      id: 3,
-                      name: 'Kosan Cangkring',
-                      imageUrl: 'images/space3.png',
-                      price: 600,
-                      country: 'Indonesia',
-                      city: 'Jakarta',
-                      ranting: 5,
-                    ),
-                  ),
-                ],
+              child: FutureBuilder(
+                future: spaceProvider.getRecomendedSpaces(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List data = snapshot.data! as List;
+
+                    int index = 0;
+
+                    return Column(
+                        children: data.map((item) {
+                      index++;
+                      return Container(
+                        margin: EdgeInsets.only(
+                          top: index == 1 ? 0 : 30,
+                        ),
+                        child: SpaceCard(item),
+                      );
+                    }).toList());
+                  }
+
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
               ),
             ),
             //NOTE: TIPS & GUIDANCE
