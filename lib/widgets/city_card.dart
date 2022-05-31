@@ -21,8 +21,8 @@ class CityCard extends StatelessWidget {
               children: [
                 Image.asset(
                   city.imageUrl,
-                  height: 102,
                   width: 120,
+                  height: 102,
                   fit: BoxFit.cover,
                 ),
                 city.isPopular
@@ -39,7 +39,7 @@ class CityCard extends StatelessWidget {
                           ),
                           child: Center(
                             child: Image.asset(
-                              'images/icon_star.png',
+                              'assets/icon_star.png',
                               width: 22,
                               height: 22,
                             ),

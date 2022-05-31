@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:bwa_cozy/models/city.dart';
 import 'package:bwa_cozy/models/space.dart';
+import 'package:bwa_cozy/models/tips.dart';
+import 'package:bwa_cozy/providers/space_provider.dart';
 import 'package:bwa_cozy/theme.dart';
 import 'package:bwa_cozy/widgets/bottom_navbar_item.dart';
 import 'package:bwa_cozy/widgets/city_card.dart';
@@ -9,9 +9,6 @@ import 'package:bwa_cozy/widgets/space_card.dart';
 import 'package:bwa_cozy/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../models/tips.dart';
-import '../providers/space_providers.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -27,7 +24,7 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: edge,
             ),
-            //NOTE: TITLE/HEADER
+            // NOTE: TITLE/HEADER
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
@@ -52,12 +49,12 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            //NOTE : POPULAR CITIES
+            // NOTE: POPULAR CITIES
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
                 'Popular Cities',
-                style: blackTextStyle.copyWith(
+                style: regularTextStyle.copyWith(
                   fontSize: 16,
                 ),
               ),
@@ -77,7 +74,7 @@ class HomePage extends StatelessWidget {
                     City(
                       id: 1,
                       name: 'Jakarta',
-                      imageUrl: 'images/city1.png',
+                      imageUrl: 'assets/city1.png',
                     ),
                   ),
                   SizedBox(
@@ -87,7 +84,7 @@ class HomePage extends StatelessWidget {
                     City(
                       id: 2,
                       name: 'Bandung',
-                      imageUrl: 'images/city2.png',
+                      imageUrl: 'assets/city2.png',
                       isPopular: true,
                     ),
                   ),
@@ -98,7 +95,38 @@ class HomePage extends StatelessWidget {
                     City(
                       id: 3,
                       name: 'Surabaya',
-                      imageUrl: 'images/city3.png',
+                      imageUrl: 'assets/city3.png',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  CityCard(
+                    City(
+                      id: 4,
+                      name: 'Palembang',
+                      imageUrl: 'assets/city4.png',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  CityCard(
+                    City(
+                      id: 5,
+                      name: 'Aceh',
+                      imageUrl: 'assets/city5.png',
+                      isPopular: true,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  CityCard(
+                    City(
+                      id: 6,
+                      name: 'Bogor',
+                      imageUrl: 'assets/city6.png',
                     ),
                   ),
                   SizedBox(
@@ -107,15 +135,15 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            //NOTE: RECOMMENDED CITIES
             SizedBox(
               height: 30,
             ),
+            // NOTE: RECOMMENDED SPACE
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
-                'Recommeded Space',
-                style: blackTextStyle.copyWith(
+                'Recommended Space',
+                style: regularTextStyle.copyWith(
                   fontSize: 16,
                 ),
               ),
@@ -128,23 +156,24 @@ class HomePage extends StatelessWidget {
                 horizontal: edge,
               ),
               child: FutureBuilder(
-                future: spaceProvider.getRecomendedSpaces(),
+                future: spaceProvider.getRecommendedSpaces(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List data = snapshot.data! as List;
+                    List<Space> data = snapshot.data;
 
                     int index = 0;
 
                     return Column(
-                        children: data.map((item) {
-                      index++;
-                      return Container(
-                        margin: EdgeInsets.only(
-                          top: index == 1 ? 0 : 30,
-                        ),
-                        child: SpaceCard(item),
-                      );
-                    }).toList());
+                      children: data.map((item) {
+                        index++;
+                        return Container(
+                          margin: EdgeInsets.only(
+                            top: index == 1 ? 0 : 30,
+                          ),
+                          child: SpaceCard(item),
+                        );
+                      }).toList(),
+                    );
                   }
 
                   return Center(
@@ -153,15 +182,16 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-            //NOTE: TIPS & GUIDANCE
+
             SizedBox(
               height: 30,
             ),
+            // NOTE: TIPS & GUIDANCE
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
-                'Tips & Guidence',
-                style: blackTextStyle.copyWith(
+                'Tips & Guidance',
+                style: regularTextStyle.copyWith(
                   fontSize: 16,
                 ),
               ),
@@ -170,15 +200,17 @@ class HomePage extends StatelessWidget {
               height: 16,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: edge),
+              padding: EdgeInsets.symmetric(
+                horizontal: edge,
+              ),
               child: Column(
                 children: [
                   TipsCard(
                     Tips(
                       id: 1,
                       title: 'City Guidelines',
-                      imageUrl: 'images/tips1.png',
-                      updatedAt: '1 hour ago',
+                      imageUrl: 'assets/tips1.png',
+                      updatedAt: '20 Apr',
                     ),
                   ),
                   SizedBox(
@@ -188,15 +220,15 @@ class HomePage extends StatelessWidget {
                     Tips(
                       id: 2,
                       title: 'Jakarta Fairship',
-                      imageUrl: 'images/tips2.png',
-                      updatedAt: '17 hour ago',
+                      imageUrl: 'assets/tips2.png',
+                      updatedAt: '11 Dec',
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: 50 + edge,
+              height: 100 + edge,
             ),
           ],
         ),
@@ -208,7 +240,6 @@ class HomePage extends StatelessWidget {
           horizontal: edge,
         ),
         decoration: BoxDecoration(
-          // color: Colors.blue,
           color: Color(0xffF6F7F8),
           borderRadius: BorderRadius.circular(23),
         ),
@@ -216,19 +247,19 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             BottomNavbarItem(
-              imageUrl: 'icon_home.png',
+              imageUrl: 'assets/icon_home.png',
               isActive: true,
             ),
             BottomNavbarItem(
-              imageUrl: 'icon_email.png',
+              imageUrl: 'assets/icon_email.png',
               isActive: false,
             ),
             BottomNavbarItem(
-              imageUrl: 'icon_card.png',
+              imageUrl: 'assets/icon_card.png',
               isActive: false,
             ),
             BottomNavbarItem(
-              imageUrl: 'icon_love.png',
+              imageUrl: 'assets/icon_love.png',
               isActive: false,
             ),
           ],

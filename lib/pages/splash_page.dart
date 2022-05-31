@@ -13,9 +13,7 @@ class SplashPage extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.bottomCenter,
-              child: Image.asset(
-                'images/splash_image.png',
-              ),
+              child: Image.asset('assets/splash_image.png'),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -30,7 +28,7 @@ class SplashPage extends StatelessWidget {
                     width: 50,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/logo.png'),
+                        image: AssetImage('assets/logo.png'),
                       ),
                     ),
                   ),
@@ -38,7 +36,7 @@ class SplashPage extends StatelessWidget {
                     height: 30,
                   ),
                   Text(
-                    'Find Cozy House \n to Stay and Happy',
+                    'Find Cozy House\nto Stay and Happy',
                     style: blackTextStyle.copyWith(
                       fontSize: 24,
                     ),
@@ -47,7 +45,7 @@ class SplashPage extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Stop membuang banyak waktu \n pada tempat yang tidak habitable',
+                    'Stop membuang banyak waktu\npada tempat yang tidak habitable',
                     style: greyTextStyle.copyWith(
                       fontSize: 16,
                     ),
@@ -78,7 +76,7 @@ class SplashPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
