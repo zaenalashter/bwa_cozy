@@ -1,8 +1,8 @@
 import 'package:bwa_cozy/models/space.dart';
-import 'package:bwa_cozy/theme.dart';
+import 'package:bwa_cozy/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/detail_page.dart';
+import '../theme.dart';
 
 class SpaceCard extends StatelessWidget {
   final Space space;
@@ -16,7 +16,7 @@ class SpaceCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailPage(),
+            builder: (context) => DetailPage(space),
           ),
         );
       },
@@ -46,26 +46,25 @@ class SpaceCard extends StatelessWidget {
                           bottomLeft: Radius.circular(36),
                         ),
                       ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'images/icon_star.png',
-                              width: 22,
-                              height: 22,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/icon_star.png',
+                            width: 22,
+                            height: 22,
+                          ),
+                          Text(
+                            '${space.rating}/5',
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 13,
                             ),
-                            Text(
-                              '${space.ranting}/5',
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 13,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -104,9 +103,12 @@ class SpaceCard extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              Text('${space.city}, ${space.country}', style: greyTextStyle),
+              Text(
+                '${space.city}, ${space.country}',
+                style: greyTextStyle,
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

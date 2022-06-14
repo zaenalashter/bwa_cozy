@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class SpaceProvider extends ChangeNotifier {
-  getRecomendedSpaces() async {
-    final Uri _url =
-        Uri.parse('https://bwa-cozy.herokuapp.com/recommended-spaces');
-    var result = await http.get(_url);
+  getRecommendedSpaces() async {
+    var result =
+        await http.get('https://bwa-cozy.herokuapp.com/recommended-spaces');
+
     print(result.statusCode);
     print(result.body);
 
     if (result.statusCode == 200) {
       List data = jsonDecode(result.body);
-      List spaces = data.map((item) => Space.fromJson(item)).toList();
+      List<Space> spaces = data.map((item) => Space.fromJson(item)).toList();
       return spaces;
     } else {
       return <Space>[];

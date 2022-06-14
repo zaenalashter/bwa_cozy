@@ -1,50 +1,50 @@
 class Space {
-  late int id;
-  late String name;
-  late String imageUrl;
-  late int price;
-  late String country;
-  late String city;
-  late int ranting;
-  late String address;
-  late String phone;
-  late String mapUrl;
-  late List photos;
-  late int numberOfKitchens;
-  late int numberOfBedrooms;
-  late int numberOfCupboards;
+  int id;
+  String name;
+  String imageUrl;
+  int price;
+  String city;
+  String country;
+  int rating;
+  String address;
+  String phone;
+  String mapUrl;
+  List photos;
+  int numberOfKitchens;
+  int numberOfBedrooms;
+  int numberOfCupboards;
 
   Space({
-    required this.id,
-    required this.name,
-    required this.imageUrl,
-    required this.price,
-    required this.country,
-    required this.city,
-    required this.ranting,
-    required this.address,
-    required this.phone,
-    required this.mapUrl,
-    required this.photos,
-    required this.numberOfKitchens,
-    required this.numberOfBedrooms,
-    required this.numberOfCupboards,
+    this.city,
+    this.country,
+    this.id,
+    this.imageUrl,
+    this.name,
+    this.price,
+    this.rating,
+    this.address,
+    this.mapUrl,
+    this.numberOfBedrooms,
+    this.numberOfCupboards,
+    this.numberOfKitchens,
+    this.phone,
+    this.photos,
   });
 
   Space.fromJson(json) {
     id = json['id'];
     name = json['name'];
-    imageUrl = json['imageUrl'];
-    price = json['price'];
-    country = json['country'];
     city = json['city'];
-    ranting = json['ranting'];
+    country = json['country'];
+    imageUrl = json['image_url'];
+    price = json['price'];
+    rating = json['rating'];
     address = json['address'];
     phone = json['phone'];
-    mapUrl = json['mapUrl'];
+    mapUrl = json['map_url'];
     photos = json['photos'];
-    numberOfKitchens = json['numberOfKitchens'];
-    numberOfBedrooms = json['numberOfBedrooms'];
-    numberOfCupboards = json['numberOfCupboards'];
+    numberOfBedrooms = json['number_of_bedrooms'];
+    numberOfCupboards = json['number_of_cupboards'];
+    numberOfKitchens = json['number_of_kitchens'];
   }
 }
