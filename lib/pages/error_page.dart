@@ -3,8 +3,11 @@ import 'package:bwa_cozy/theme.dart';
 import 'package:flutter/material.dart';
 
 class ErrorPage extends StatelessWidget {
+<<<<<<< HEAD
   // const ErrorPage({Key? key}) : super(key: key);
 
+=======
+>>>>>>> 5143bbd5bb0bdf5abc452055a748d0026f1460e4
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +18,7 @@ class ErrorPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/error.png',
+                'assets/error.png',
                 width: 300,
               ),
               SizedBox(
@@ -31,7 +34,7 @@ class ErrorPage extends StatelessWidget {
                 height: 14,
               ),
               Text(
-                'Seems Like the page you were\n requested is already gone',
+                'Seems like the page that you were\nrequested is already gone',
                 style: greyTextStyle.copyWith(
                   fontSize: 16,
                 ),
@@ -47,7 +50,9 @@ class ErrorPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
                         (route) => false);
                   },
                   color: purpleColor,
