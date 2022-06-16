@@ -34,6 +34,12 @@ dependencies:
   url_launcher: ^5.7.10
   http: ^0.12.2
   provider: ^4.3.2+3
+  flutter_launcher_icons: ^0.8.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon_logo.png"
 
 dev_dependencies:
   flutter_lints: ^1.0.0
